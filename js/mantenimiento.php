@@ -18,7 +18,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Mantenimiento :: Country del Lago</title>
+    <title>Mantenimiento :: <?php echo $nombre_fraccionamiento; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php">Country del Lago</a></li>
+          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
           <li class="active">Pago de Mantenimiento</li>
         </ol>
       </div>

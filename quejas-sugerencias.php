@@ -1,5 +1,6 @@
 <?php
 	session_start();
+  include('configPHP/config.inc.php');
   $actual_page = "quejas";
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Quejas y Sugerencias :: Country del Lago</title>
+    <title>Quejas y Sugerencias :: <?php echo $nombre_fraccionamiento; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +38,7 @@
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php">Country del Lago</a></li>
+          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
           <li class="active">Quejas y Sugerencias</li>
         </ol>
       </div>

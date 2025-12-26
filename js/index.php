@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Country del Lago</title>
+    <title><?php echo $nombre_fraccionamiento; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
     <div class="thumbnail">
       <img src="img/letreroentok.jpg" alt="...">
       <div class="caption">
-        <h3>Country del Lago</h3>
+        <h3><?php echo $nombre_fraccionamiento; ?></h3>
         <p>Pagina para administracion y control</p>
         
       </div>

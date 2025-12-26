@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             
-            <a class="navbar-brand" href="index.php">Country del Lago</a>
+            <a class="navbar-brand" href="index.php"><?php echo $nombre_fraccionamiento; ?></a>
         </div>
         <center>
             <div class="navbar-collapse collapse" id="navbar-main">

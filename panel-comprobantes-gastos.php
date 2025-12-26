@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Country del Lago :: Panel Admin</title>
+    <title><?php echo $nombre_fraccionamiento; ?> :: Panel Admin</title>
     <?php include("inc/head-common.php"); ?>
     <script type='text/javascript'>
     function cambiarMes(){
@@ -56,7 +56,7 @@
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php">Country del Lago</a></li>
+          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
           <li class="active">Panel de Administracion</li>
         </ol>
       </div>

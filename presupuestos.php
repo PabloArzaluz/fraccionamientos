@@ -33,7 +33,7 @@ function getUltimoDiaMes($elAnio,$elMes) {
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Presupuestos :: Country del Lago</title>
+    <title>Presupuestos :: <?php echo $nombre_fraccionamiento; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@ function getUltimoDiaMes($elAnio,$elMes) {
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php">Country del Lago</a></li>
+          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
           <li class="active">Presupuestos</li>
         </ol>
       </div>

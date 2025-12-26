@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Estados de Cuenta :: Country del Lago</title>
+    <title>Estados de Cuenta :: <?php echo $nombre_fraccionamiento; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php">Country del Lago</a></li>
+          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
           <li class="active">Estados de Cuenta</li>
         </ol>
       </div>

@@ -1,5 +1,6 @@
 <?php
 	session_start();
+  include('configPHP/config.inc.php');
   $actual_page = "inicio";
 ?>
 <!DOCTYPE html>
@@ -58,8 +59,7 @@
       <img src="img/elcielo.png" alt="...">
       <div class="caption">
       <center>
-      <h3>Residencial El Cielo I</h3>
-        <p>Circuito San Miguel</p>
+      <h3><?php echo $nombre_fraccionamiento; ?></h3>
       </center>
         
       </div>

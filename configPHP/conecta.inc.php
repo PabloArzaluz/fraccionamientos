@@ -1,19 +1,17 @@
 <?php
+	
+	$dbhost="localhost";
+	$dbuser="root";
+	$dbpass="";
+	$dbname="fraccionamientos";
+    
+	$nombre_fraccionamiento = "Residencial El Cielo";  //se utiliza para las vistas
 
-//Conexion vieja, ideal dejar de utilizarlo
-function Conecta(){
-	require("config.inc.php");
-	$Conexion = mysql_connect($dbhost,$dbuser,$dbpass);
-	if(!$Conexion){
-		die("Error al conectar con la BD, favor de verificar");
-		  }
-	if(!mysql_select_db($dbname, $Conexion))
-		echo 'No se selecciono correctamente la Base de Datos <b>'.$dbname. '</b>';
-	return $Conexion;
-}
-function desconectar_bd(){
-	require("config.inc.php");
-	$Conexion = mysql_connect($dbhost,$dbuser,$dbpass); 
-	mysql_close();
-}
+	//Remote Database
+	/*
+	$dbhost="localhost";
+	$dbuser="syscomle_country";
+	$dbpass="Qw3rty2012%";
+	$dbname="syscomle_country";
+	*/
 ?>

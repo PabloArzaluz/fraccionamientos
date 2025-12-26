@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Reporte de Pagos de Mantenimientos :: Country del Lago I</title>
+        <title>Reporte de Pagos de Mantenimientos :: <?php echo $nombre_fraccionamiento; ?> I</title>
         <?php include("inc/head-common.php"); ?>
         <link rel="stylesheet" href="css/print.css" type="text/css" media="print"/>
     </head>
