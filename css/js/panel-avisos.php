@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   date_default_timezone_set('America/Mexico_City');
 
 ?>
@@ -51,8 +51,8 @@
 <tr><th>Titulo</th><th>Descripcion</th><th>Fecha</th><th>Fecha</th><th>Hora</th><th>Autor</th><th>Accion</th></tr>
 </thead>
 <?php
-  $consulta_noti = mysql_query("SELECT id_noti,titulo,texto,fecha,noti.id_user,hora,user.nombre FROM noti inner join user on user.id_user=noti.id_user;",$link) or die(mysql_error());
-    while($arr_usuarios = mysql_fetch_array($consulta_noti)){ 
+  $consulta_noti = mysqli_query($mysqliConn,"SELECT id_noti,titulo,texto,fecha,noti.id_user,hora,user.nombre FROM noti inner join user on user.id_user=noti.id_user;") or die(mysqli_error($mysqliConn));
+    while($arr_usuarios = mysqli_fetch_array($consulta_noti)){ 
               echo "<tr><td>$arr_usuarios[0]</td><td>$arr_usuarios[1]</td><td>$arr_usuarios[2]</td><td>$arr_usuarios[3]</td><td>$arr_usuarios[5]</td><td>$arr_usuarios[6]</td><td class='text-center'><div class='btn-group' role='group' aria-label='...'>
   <a href='oper_aviso.php?oper=edit&i=$arr_usuarios[0]' class='btn btn-success btn-xs'>Editar</a></div></td></tr>";
             }  

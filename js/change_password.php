@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   $actual_page = "notificaciones";
 ?>
 <!DOCTYPE html>
@@ -121,8 +121,8 @@
           <div class="col-xs-12">
             <div class="form-group text-right">
             <?php 
-              $conocerPassword = mysql_query("select password from user where id_user=".$_SESSION['id_user'].";",$link) or die(mysql_error());
-              $pass = mysql_fetch_row($conocerPassword);
+              $conocerPassword = mysqli_query($mysqliConn,"select password from user where id_user=".$_SESSION['id_user'].";") or die(mysqli_error($mysqliConn));
+              $pass = mysqli_fetch_row($conocerPassword);
             ?>
               <a href="#" onclick="validarPassword('<?php echo $pass[0]; ?>');" class="btn btn-success">Cambiar Contraseña</a>
             </div>

@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   $actual_page = "notificaciones";
   date_default_timezone_set('America/Mexico_City');
 ?>
@@ -72,10 +72,10 @@
   if ($mes2=="November") $mes2="Noviembre";
   if ($mes2=="December") $mes2="Diciembre";
  $fechaActual = $ano."-".$mes."-01";
-    $conocercantidad = mysql_query("select COUNT(DISTINCT id_user) from  user where level=0;",$link) or die(mysql_error());
-    $cantidad = mysql_fetch_row($conocercantidad);
-    $conocerpagados = mysql_query("select count(DISTINCT id_mensualidad) from mensualidades where fecha='$fechaActual';",$link) or die(mysql_error());
-    $cantidadpagados = mysql_fetch_row($conocerpagados);
+    $conocercantidad = mysqli_query($mysqliConn,"select COUNT(DISTINCT id_user) from  user where level=0;") or die(mysqli_error($mysqliConn));
+    $cantidad = mysqli_fetch_row($conocercantidad);
+    $conocerpagados = mysqli_query($mysqliConn,"select count(DISTINCT id_mensualidad) from mensualidades where fecha='$fechaActual';") or die(mysqli_error($mysqliConn));
+    $cantidadpagados = mysqli_fetch_row($conocerpagados);
     $porcentajepagados = round(($cantidadpagados[0] * 100 ) / $cantidad[0],0);
     $porcentajenopagados = 100 - $porcentajepagados ;
     echo "<strong>".$cantidadpagados[0]."</strong>";
@@ -88,8 +88,8 @@
     <div class="row">
       <div class="col-xs-12">
         <?php
-          $consulta_noti = mysql_query("SELECT id_noti,titulo,texto,fecha,noti.id_user,hora,user.nombre FROM noti inner join user on user.id_user=noti.id_user;",$link) or die(mysql_error());
-            while($arr_usuarios = mysql_fetch_array($consulta_noti)){ 
+          $consulta_noti = mysqli_query($mysqliConn,"SELECT id_noti,titulo,texto,fecha,noti.id_user,hora,user.nombre FROM noti inner join user on user.id_user=noti.id_user;") or die(mysqli_error($mysqliConn));
+            while($arr_usuarios = mysqli_fetch_array($consulta_noti)){ 
               echo "<div class='row'>
                       <div class='col-xs-12'>
                         <div class='panel panel-primary'>

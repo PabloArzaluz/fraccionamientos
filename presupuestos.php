@@ -1,13 +1,10 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
   include('configPHP/config.inc.php');
   $actual_page = "presupuestos";
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
   $mesActual  = date('m');
   $anoActual = date('Y');
   $fechaActual = $anoActual."-".$mesActual."-01"; 
-  $link = Conecta();
   date_default_timezone_set('America/Mexico_City');
 
 function getUltimoDiaMes($elAnio,$elMes) {
@@ -91,11 +88,11 @@ function getUltimoDiaMes($elAnio,$elMes) {
           <div class="col-xs-11 col-sm-6 col-md-3 text-right">
 
       <?php 
-        $consulta_mes = mysql_query("SELECT distinct year(fecha),month(fecha) FROM presupuestos WHERE MONTH(fecha) order by fecha desc;",$link) or die(mysql_error());
-        if(mysql_num_rows($consulta_mes)>0){
+        $consulta_mes = mysqli_query($mysqliConn,"SELECT DISTINCT YEAR(fecha) AS anio, MONTH(fecha) AS mes FROM presupuestos ORDER BY anio DESC, mes DESC") or die(mysqli_error($mysqliConn));
+        if(mysqli_num_rows($consulta_mes)>0){
           echo "<select class='form-control'  id='generaFecha' onchange='cambiarMes()' required>";
           echo "<option value=''>Seleccione un Mes</option>";
-          while($filaMes = mysql_fetch_array($consulta_mes)){
+          while($filaMes = mysqli_fetch_array($consulta_mes)){
             $filaMesNombre = "";
             if($filaMes[1]=="1"){$filaMesNombre="Enero";}
             if($filaMes[1]=="2"){$filaMesNombre="Febrero";}
@@ -129,8 +126,8 @@ function getUltimoDiaMes($elAnio,$elMes) {
 <?php
 //echo $fechaRequerida;
 //echo $fecha_entre;
-  $consulta_comprobantes = mysql_query("SELECT * FROM presupuestos where fecha BETWEEN '$fechaRequerida' and '$fecha_entre';",$link) or die(mysql_error());
-  while($Arrcomprobantes = mysql_fetch_array($consulta_comprobantes)){ 
+  $consulta_comprobantes = mysqli_query($mysqliConn,"SELECT * FROM presupuestos where fecha BETWEEN '$fechaRequerida' and '$fecha_entre';") or die(mysql_error($mysqliConn));
+  while($Arrcomprobantes = mysqli_fetch_array($consulta_comprobantes)){ 
       if ($Arrcomprobantes[5]=="pdf") {
              /*echo "<a href='visor.php?oper=$Arrcomprobantes[2]' class='btn btn-success btn-xs'>ver</a></div></td></tr>";*/
              echo"

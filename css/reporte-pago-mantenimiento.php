@@ -1,10 +1,10 @@
 <?php
 
 	session_start();
-    include('configPHP/conecta.inc.php');
+    
     include('configPHP/config.inc.php');
-    ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-    $link=Conecta();
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,8 +38,8 @@
                  echo "<div class='row'><div class='col-xs-12'></div></div>";
                 $pagadas = 0;
                 echo "<div class='row'>";
-                $consulta_mantto = mysql_query("select user.id_user,user.no_casa,mensualidades.fecha from user inner join mensualidades on user.id_user = mensualidades.id_user where mensualidades.fecha = '$fechaActual' order by user.no_casa;",$link) or die(mysql_error());
-                while($arr_mantto = mysql_fetch_array($consulta_mantto)){ 
+                $consulta_mantto = mysqli_query($mysqliConn,"select user.id_user,user.no_casa,mensualidades.fecha from user inner join mensualidades on user.id_user = mensualidades.id_user where mensualidades.fecha = '$fechaActual' order by user.no_casa;") or die(mysqli_error($mysqliConn));
+                while($arr_mantto = mysqli_fetch_array($consulta_mantto)){ 
                     $pagadas = $pagadas+1;
                     echo "<div class='col-xs-2'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span> $arr_mantto[1]</div>"; 
                 } 
@@ -56,8 +56,8 @@
             <div class="row">
                 <?php
           $nopagadas = 0;
-            $consulta_mantto = mysql_query("SELECT * FROM user WHERE id_user NOT IN (select user.id_user from user inner join mensualidades on user.id_user = mensualidades.id_user where mensualidades.fecha = '$fechaActual' order by no_casa) and user.level=0;",$link) or die(mysql_error());
-            while($arr_mantto = mysql_fetch_array($consulta_mantto)){ 
+            $consulta_mantto = mysqli_query($mysqliConn,"SELECT * FROM user WHERE id_user NOT IN (select user.id_user from user inner join mensualidades on user.id_user = mensualidades.id_user where mensualidades.fecha = '$fechaActual' order by no_casa) and user.level=0;") or die(mysqli_error($mysqliConn));
+            while($arr_mantto = mysqli_fetch_array($consulta_mantto)){ 
               $nopagadas = $nopagadas +1;
               echo "<div class='col-xs-2'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>$arr_mantto[1]</div>";
             } 

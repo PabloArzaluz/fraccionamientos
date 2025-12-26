@@ -1,9 +1,9 @@
 <?php 
 	session_start();
-  	include('configPHP/conecta.inc.php');
+  	
   	include('configPHP/config.inc.php');
-  	ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  	$link=Conecta();
+  	
+  	
  	date_default_timezone_set('America/Mexico_City');
 
   	$id = $_POST['user'];
@@ -15,7 +15,7 @@
 	$fechaActual = $ano."-".$mes."-01";
 
 	
-	$insertarMesActual = mysql_query("insert into mensualidades(id_user,fecha) values($id,'$fechaActual');",$link) or die(mysql_error());
+	$insertarMesActual = mysqli_query($mysqliConn,"insert into mensualidades(id_user,fecha) values($id,'$fechaActual');") or die(mysqli_error($mysqliConn));
 	
 	/*
 if(!isset($_POST['stat'])){
@@ -25,9 +25,9 @@ if(!isset($_POST['stat'])){
 	}
 
 	if($operacion == "upd"){
-		//$cambioestado = mysql_query("update mantto set estatus=$stat where id_user=$id;",$link) or die (mysql_error());
+		//$cambioestado = mysqli_query($mysqliConn,"update mantto set estatus=$stat where id_user=$id;",$link) or die (mysqli_error($mysqliConn));
 	}elseif($operacion == "ins"){
-		//$insertaestado = mysql_query("insert into mantto(id_user,estatus) values($id,$stat);",$link) or die(mysql_error());
+		//$insertaestado = mysqli_query($mysqliConn,"insert into mantto(id_user,estatus) values($id,$stat);") or die(mysqli_error($mysqliConn));
 	}*/
 	/*$_SESSION['redirect'] = "mantto";*/
 	header("Location: panel-estatus-mantenimiento.php");

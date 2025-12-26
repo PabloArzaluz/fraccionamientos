@@ -1,10 +1,10 @@
 <?php
 	session_start();
   $actual_page = "mantenimiento";
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
 date_default_timezone_set('America/Mexico_City');
 ?>
 <!DOCTYPE html>
@@ -66,10 +66,10 @@ date_default_timezone_set('America/Mexico_City');
   if ($mes2=="December") $mes2="Diciembre";
  $fechaActual = $ano."-".$mes."-01";
 
-    $conocercantidad = mysql_query("select COUNT(DISTINCT id_user) from  user where level=0;",$link) or die(mysql_error());
-    $cantidad = mysql_fetch_row($conocercantidad);
-    $conocerpagados = mysql_query("select count(DISTINCT id_mensualidad) from mensualidades where fecha='$fechaActual';",$link) or die(mysql_error());
-    $cantidadpagados = mysql_fetch_row($conocerpagados);
+    $conocercantidad = mysqli_query($mysqliConn,"select COUNT(DISTINCT id_user) from  user where level=0;") or die(mysqli_error($mysqliConn));
+    $cantidad = mysqli_fetch_row($conocercantidad);
+    $conocerpagados = mysqli_query($mysqliConn,"select count(DISTINCT id_mensualidad) from mensualidades where fecha='$fechaActual';") or die(mysqli_error($mysqliConn));
+    $cantidadpagados = mysqli_fetch_row($conocerpagados);
     $porcentajepagados = round(($cantidadpagados[0] * 100 ) / $cantidad[0],0);
     $porcentajenopagados = 100 - $porcentajepagados ;
   ?>
@@ -94,16 +94,16 @@ date_default_timezone_set('America/Mexico_City');
               <?php
               
 
-            $conocerUsuarioNormalesCasa = mysql_query("select id_user,no_casa from user where level = 0 order by no_casa; ",$link) or die(mysql_error());
-            while($arrUsuarios = mysql_fetch_array($conocerUsuarioNormalesCasa)){
-                $consulta_mantto = mysql_query("select * from  mensualidades where id_user=$arrUsuarios[0] and fecha='$fechaActual';",$link) or die(mysql_error());
-                if(mysql_num_rows($consulta_mantto)>0){
+            $conocerUsuarioNormalesCasa = mysqli_query($mysqliConn,"select id_user,no_casa from user where level = 0 order by no_casa; ") or die(mysqli_error($mysqliConn));
+            while($arrUsuarios = mysqli_fetch_array($conocerUsuarioNormalesCasa)){
+                $consulta_mantto = mysqli_query($mysqliConn,"select * from  mensualidades where id_user=$arrUsuarios[0] and fecha='$fechaActual';") or die(mysqli_error($mysqliConn));
+                if(mysqli_num_rows($consulta_mantto)>0){
                   echo "<tr class='success'><td> $arrUsuarios[1]</td><td><span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Pagado</td></tr>";
                 }else{
                   echo "<tr class='danger'><td>$arrUsuarios[1]</td><td><span class='glyphicon glyphicon-remove' aria-hidden='true'></span> No Pagado</td></tr>";
                 }
 
-                  /*while($arr_mantto = mysql_fetch_array($consulta_mantto)){ 
+                  /*while($arr_mantto = mysqli_fetch_array($consulta_mantto)){ 
                     echo "<tr ";
                       if($arr_mantto[2] == 0){echo "class='danger'";}else{echo "class='success'";}
                     echo "><td>$arr_mantto[1]</td><td>";

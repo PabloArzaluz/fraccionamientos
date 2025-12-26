@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   date_default_timezone_set('America/Mexico_City');
   $current_page_admin = "qys";
 ?>

@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   date_default_timezone_set('America/Mexico_City');
 
 ?>
@@ -51,8 +51,8 @@
         </thead>
         <tbody>
           <?php
-            $consulta_usuarios = mysql_query("select id_user,user_login,nombre,password,no_casa,level from user order by user_login;",$link) or die(mysql_error());
-            while($arr_usuarios = mysql_fetch_array($consulta_usuarios)){ 
+            $consulta_usuarios = mysqli_query($mysqliConn,"select id_user,user_login,nombre,password,no_casa,level from user order by user_login;") or die(mysqli_error($mysqliConn));
+            while($arr_usuarios = mysqli_fetch_array($consulta_usuarios)){ 
               echo "<tr><td>$arr_usuarios[1]</td><td>$arr_usuarios[2]</td><td>$arr_usuarios[3]</td><td>$arr_usuarios[4]</td><td>$arr_usuarios[5]</td><td class='text-center'><div class='btn-group' role='group' aria-label='...'>
   <a href='oper_user.php?oper=edit&i=$arr_usuarios[0]' class='btn btn-success btn-xs'>Editar</a></div></td></tr>";
             } 

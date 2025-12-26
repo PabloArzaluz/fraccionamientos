@@ -1,9 +1,9 @@
 <?php 
    session_start();
-    include('configPHP/conecta.inc.php');
+    
     include('configPHP/config.inc.php');
-    ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-    $link=Conecta();
+    
+    
     date_default_timezone_set('America/Mexico_City');
 
     $oper = $_GET['oper'];
@@ -102,7 +102,7 @@
                                           }
                   move_uploaded_file($temporal,$ruta);
                   $consultaAgregar = "insert into comprobantes (titulo,ruta,id_user,descripcion,tipo,fecha) values('".$titul."','".$ruta."',".$_SESSION['id_user'].",'".$descripcion."','".$tipo_Archivo."','".$fecha_completa."');";
-                  $agrgarComprobante = mysql_query($consultaAgregar,$link);
+                  $agrgarComprobante = mysqli_query($consultaAgregar,$link);
                   echo "<SCRIPT LANGUAGE='javascript'>alert('Comprobante Guardado Presiona Ok Para continuar');document.location=('panel-comprobantes-gastos.php');</SCRIPT>";
                   
               

@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   date_default_timezone_set('America/Mexico_City');
 
   //Conocer Mes Actual
@@ -25,8 +25,8 @@
   //Recibir Datos de Usuario
   $id_usuario = $_GET['i'];
   $conocerPagosRealizados = "select * from mensualidades where id_user=$id_usuario;";
-  $despliegaMensualidades = mysql_query($conocerPagosRealizados,$link) or die(mysql_error());
-  $numPagos = mysql_num_rows($despliegaMensualidades);
+  $despliegaMensualidades = mysqli_query($conocerPagosRealizados,$link) or die(mysqli_error($mysqliConn));
+  $numPagos = mysqli_num_rows($despliegaMensualidades);
 ?>
  <!DOCTYPE html>
  <html>
@@ -200,9 +200,9 @@
 
     $('#load').ready(function () {
     <?php
-    if(mysql_num_rows($despliegaMensualidades)>0){
-        if(mysql_num_rows($despliegaMensualidades) == 1){
-          $arrMensualidades = mysql_fetch_row($despliegaMensualidades);
+    if(mysqli_num_rows($despliegaMensualidades)>0){
+        if(mysqli_num_rows($despliegaMensualidades) == 1){
+          $arrMensualidades = mysqli_fetch_row($despliegaMensualidades);
           $date = strtotime("$arrMensualidades[2]");
           date("Y", $date); // Year (2003)
           date("m", $date); // Month (12)
@@ -210,7 +210,7 @@
         }else{
           $fechas = "";
           $counter = 0;
-          while($arrMensualidades = mysql_fetch_array($despliegaMensualidades)){ 
+          while($arrMensualidades = mysqli_fetch_array($despliegaMensualidades)){ 
             $date = strtotime("$arrMensualidades[2]");
             date("Y", $date); // Year (2003)
             date("m", $date); // Month (12)
@@ -257,9 +257,9 @@
         <div class="divScroll" style="overflow:scroll; height:180px; width:200px;">
         <?php
           $conocerPagos = "select * from mensualidades where id_user=$id_usuario order by fecha desc;";
-        $despliegaMen = mysql_query($conocerPagos,$link) or die(mysql_error());
-          if(mysql_num_rows($despliegaMen)>0){
-              while($arrMen = mysql_fetch_array($despliegaMen)){
+        $despliegaMen = mysqli_query($conocerPagos,$link) or die(mysqli_error($mysqliConn));
+          if(mysqli_num_rows($despliegaMen)>0){
+              while($arrMen = mysqli_fetch_array($despliegaMen)){
                   $date = strtotime("$arrMen[2]");
                   date("Y", $date); // Year (2003)
                   $mes = date("m", $date); // Month (12)
@@ -277,8 +277,8 @@
                   if ($mes=="12") $mes="Diciembre";
                   echo $mes." - ".date("Y", $date)."<br>";
               }
-             /* if(mysql_num_rows($despliegaMensualidades) == 1){
-                $arrMensualidades = mysql_fetch_row($despliegaMensualidades);
+             /* if(mysqli_num_rows($despliegaMensualidades) == 1){
+                $arrMensualidades = mysqli_fetch_row($despliegaMensualidades);
                 $date = strtotime("$arrMensualidades[2]");
                 date("Y", $date); // Year (2003)
                 date("m", $date); // Month (12)
@@ -286,7 +286,7 @@
               }else{
                 $fechas = "";
                 $counter = 0;
-                while($arrMensualidades = mysql_fetch_array($despliegaMensualidades)){ 
+                while($arrMensualidades = mysqli_fetch_array($despliegaMensualidades)){ 
                   $date = strtotime("$arrMensualidades[2]");
                   date("Y", $date); // Year (2003)
                   date("m", $date); // Month (12)

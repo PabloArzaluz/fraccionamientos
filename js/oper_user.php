@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   if($_GET['oper'] == "add"){
     $operacion = "Agregar";
   }elseif ($_GET['oper'] == "edit") {
@@ -50,8 +50,8 @@
       
       $id_user = $_GET['i'];
       $typeOper = "edit&i=".$id_user;
-      $conocerDatosUser = mysql_query("select * from user where id_user=$id_user;",$link) or die(mysql_error());
-      $filaDatosUser = mysql_fetch_row($conocerDatosUser);
+      $conocerDatosUser = mysqli_query($mysqliConn,"select * from user where id_user=$id_user;") or die(mysqli_error($mysqliConn));
+      $filaDatosUser = mysqli_fetch_row($conocerDatosUser);
       $loginUser  = $filaDatosUser[1];
       $password   = $filaDatosUser[3];
       $noCasa = $filaDatosUser[4];

@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   if($_GET['oper'] == "add"){
     $operacion = "Agregar";
   }elseif ($_GET['oper'] == "edit") {
@@ -46,8 +46,8 @@
     }elseif($operacion == "Editar"){
       $id_noti = $_GET['i'];
       $typeOper = "edit&i=".$id_noti;
-      $conocerDatosNoti = mysql_query("select * from noti where id_noti=$id_noti;",$link) or die(mysql_error());
-      $filaDatosNoti = mysql_fetch_row($conocerDatosNoti);
+      $conocerDatosNoti = mysqli_query($mysqliConn,"select * from noti where id_noti=$id_noti;") or die(mysqli_error($mysqliConn));
+      $filaDatosNoti = mysqli_fetch_row($conocerDatosNoti);
       $tituloAviso = $filaDatosNoti[1]	;
       $tituloDescripcion = $filaDatosNoti[2];
     }

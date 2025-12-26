@@ -1,4 +1,6 @@
 <?php
+
+//Conexion vieja, ideal dejar de utilizarlo
 function Conecta(){
 	require("config.inc.php");
 	$Conexion = mysql_connect($dbhost,$dbuser,$dbpass);

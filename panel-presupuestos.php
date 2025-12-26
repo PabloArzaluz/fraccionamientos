@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   date_default_timezone_set('America/Mexico_City');
   $current_page_admin = "presupuestos";
 
@@ -74,11 +74,11 @@
     <div class="col-xs-3 text-right">
 
       <?php 
-        $consulta_mes = mysql_query("SELECT distinct year(fecha),month(fecha) FROM presupuestos WHERE MONTH(fecha) order by fecha desc;",$link) or die(mysql_error());
-        if(mysql_num_rows($consulta_mes)>0){
+        $consulta_mes = mysqli_query($mysqliConn,"SELECT YEAR(fecha) AS anio, MONTH(fecha) AS mes FROM presupuestos GROUP BY anio, mes ORDER BY anio DESC, mes DESC") or die(mysqli_error($mysqliConn));
+        if(mysqli_num_rows($consulta_mes)>0){
           echo "<select class='form-control'  id='generaFecha' onchange='cambiarMes()' required>";
           echo "<option value=''>Seleccione un Mes</option>";
-          while($filaMes = mysql_fetch_array($consulta_mes)){
+          while($filaMes = mysqli_fetch_array($consulta_mes)){
             $filaMesNombre = "";
             if($filaMes[1]=="1"){$filaMesNombre="Enero";}
             if($filaMes[1]=="2"){$filaMesNombre="Febrero";}
@@ -132,8 +132,8 @@
 <?php
 //echo $fechaRequerida;
 //echo $fecha_entre;
-  $consulta_noti = mysql_query("SELECT * FROM presupuestos where fecha BETWEEN '$fechaRequerida' and '$fecha_entre';",$link) or die(mysql_error());
-  while($arr_comentarios = mysql_fetch_array($consulta_noti)){ 
+  $consulta_noti = mysqli_query($mysqliConn,"SELECT * FROM presupuestos where fecha BETWEEN '$fechaRequerida' and '$fecha_entre';") or die(mysqli_error($mysqliConn));
+  while($arr_comentarios = mysqli_fetch_array($consulta_noti)){ 
               echo "<tr>
               <td>$arr_comentarios[1]</td>
               <td>$arr_comentarios[2]</td>

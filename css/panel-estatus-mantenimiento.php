@@ -1,9 +1,9 @@
 <?php
 	session_start();
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
   date_default_timezone_set('America/Mexico_City');
   $current_page_admin = "mantto"
 ?>
@@ -90,13 +90,13 @@
             $ano = date("Y"); 
              $mes = date("m");
              $fechaActual = $ano."-".$mes."-01";
-            $consulta_usuarios = mysql_query("select id_user,nombre,no_casa,adeudo from user where level=0 order by no_casa;",$link) or die(mysql_error());
+            $consulta_usuarios = mysqli_query($mysqliConn,"select id_user,nombre,no_casa,adeudo from user where level=0 order by no_casa;") or die(mysqli_error($mysqliConn));
 
-            while($arr_usuarios = mysql_fetch_array($consulta_usuarios)){ 
+            while($arr_usuarios = mysqli_fetch_array($consulta_usuarios)){ 
               
-              $conocer_estado_mantto = mysql_query("select * from mensualidades where id_user=$arr_usuarios[0] order by fecha desc;",$link) or die(mysql_error());
-              if(mysql_num_rows($conocer_estado_mantto)>0){
-                $row_mantto=mysql_fetch_array($conocer_estado_mantto);
+              $conocer_estado_mantto = mysqli_query($mysqliConn,"select * from mensualidades where id_user=$arr_usuarios[0] order by fecha desc;") or die(mysqli_error($mysqliConn));
+              if(mysqli_num_rows($conocer_estado_mantto)>0){
+                $row_mantto=mysqli_fetch_array($conocer_estado_mantto);
                 if($row_mantto[2] >= $fechaActual){
                   echo "<tr class='success'><td>$arr_usuarios[1]</td><td>$arr_usuarios[2]</td><td class='text-center'><form id='cambiarvalor$arr_usuarios[0]' method='post' action='_mantto.php'><input type='hidden' name='oper' value='upd'><input type='hidden' name='user' value='$arr_usuarios[0]'>Pagado</form></td><td><input type='checkbox' name='stat' aria-label='...' onchange='pagaAdeudo($arr_usuarios[0])'>".$arr_usuarios[3]."</td><td><a href='ver-meses-pagados.php?oper=edit&i=$arr_usuarios[0]' class='btn btn-success btn-xs'>Pagar Otros Meses</a></td></tr>";
                     //echo "<tr class='danger'><td>$arr_usuarios[2]</td><td>$arr_usuarios[4]</td><td class='text-center'><form id='cambiarvalor$arr_usuarios[0]' method='post' action='_mantto.php'><input type='hidden' name='user' value='$arr_usuarios[0]'><input type='hidden' name='oper' value='upd'><input type='checkbox' name='stat' aria-label='...' onchange='this.form.submit()'> No Pagado</form></td><td><a href='ver-meses-pagados.php?oper=edit&i=$arr_usuarios[0]' class='btn btn-success btn-xs'>Ver y Pagar</a></td></tr>";

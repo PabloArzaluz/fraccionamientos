@@ -1,10 +1,10 @@
 <?php
 	session_start();
   $actual_page = "mantenimiento";
-  include('configPHP/conecta.inc.php');
+  
   include('configPHP/config.inc.php');
-  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
-  $link=Conecta();
+  
+  
 
 ?>
 <!DOCTYPE html>
@@ -49,10 +49,10 @@
     </div>
   </div>
   <?php
-    $conocercantidad = mysql_query("SELECT COUNT(DISTINCT id_mantto) from  mantto;",$link) or die(mysql_error());
-    $cantidad = mysql_fetch_row($conocercantidad);
-    $conocerpagados = mysql_query("select count(DISTINCT id_mantto) from mantto where estatus=1;",$link) or die(mysql_error());
-    $cantidadpagados = mysql_fetch_row($conocerpagados);
+    $conocercantidad = mysqli_query($mysqliConn,"SELECT COUNT(DISTINCT id_mantto) from  mantto;") or die(mysqli_error($mysqliConn));
+    $cantidad = mysqli_fetch_row($conocercantidad);
+    $conocerpagados = mysqli_query($mysqliConn,"select count(DISTINCT id_mantto) from mantto where estatus=1;") or die(mysqli_error($mysqliConn));
+    $cantidadpagados = mysqli_fetch_row($conocerpagados);
     $porcentajepagados = ($cantidad[0] / 100 ) * $cantidadpagados[0];
     $porcentajenopagados = 100 - $porcentajepagados ;
   ?>
@@ -74,8 +74,8 @@
             </thead>
             <tbody>
               <?php
-            $consulta_mantto = mysql_query("select user.id_user,user.no_casa,mantto.estatus from user inner join mantto on user.id_user = mantto.id_user order by user.no_casa;",$link) or die(mysql_error());
-            while($arr_mantto = mysql_fetch_array($consulta_mantto)){ 
+            $consulta_mantto = mysqli_query($mysqliConn,"select user.id_user,user.no_casa,mantto.estatus from user inner join mantto on user.id_user = mantto.id_user order by user.no_casa;") or die(mysqli_error($mysqliConn));
+            while($arr_mantto = mysqli_fetch_array($consulta_mantto)){ 
               echo "<tr ";
                 if($arr_mantto[2] == 0){echo "class='danger'";}else{echo "class='success'";}
               echo "><td>$arr_mantto[1]</td><td>";
