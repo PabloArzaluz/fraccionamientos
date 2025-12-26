@@ -86,7 +86,7 @@
     }
 
     
-    echo "<strong>".$cantidadpagados[0]."</strong>";
+    echo "<strong>".$totalPagados."</strong>";
   ?> casas pagadas, de un total de <strong><?php echo $cantidad[0]?></strong> casas.
   </div>
   
