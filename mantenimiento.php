@@ -63,24 +63,51 @@ date_default_timezone_set('America/Mexico_City');
   if ($mes2=="December") $mes2="Diciembre";
  $fechaActual = $ano."-".$mes."-01";
 
-    $conocercantidad = mysqli_query($mysqliConn,"select COUNT(DISTINCT id_user) from  user where level=0;") or die(mysqli_error($mysqliConn));
-    $cantidad = mysqli_fetch_row($conocercantidad);
-    $conocerpagados = mysqli_query($mysqliConn,"select count(DISTINCT id_mensualidad) from mensualidades where fecha='$fechaActual';") or die(mysql_error($mysqliConn));
-    $cantidadpagados = mysqli_fetch_row($conocerpagados);
-    $porcentajepagados = round(($cantidadpagados[0] * 100 ) / $cantidad[0],0);
-    $porcentajenopagados = 100 - $porcentajepagados ;
-  ?>
-  <div class="container">
+    // 1. Obtener total de usuarios
+$queryCantidad = mysqli_query($mysqliConn, "SELECT COUNT(DISTINCT id_user) FROM user WHERE level=0") or die(mysqli_error($mysqliConn));
+$resCantidad = mysqli_fetch_row($queryCantidad);
+$totalCasas = $resCantidad[0] ?? 0;
+
+// 2. Obtener total de pagados
+$queryPagados = mysqli_query($mysqliConn, "SELECT COUNT(DISTINCT id_mensualidad) FROM mensualidades WHERE fecha='$fechaActual'") or die(mysqli_error($mysqliConn));
+$resPagados = mysqli_fetch_row($queryPagados);
+$totalPagados = $resPagados[0] ?? 0;
+
+// 3. Cálculo seguro
+$porcentajepagados = 0;
+$porcentajenopagados = 0; // Por defecto 0 si no hay casas
+$pendientes = 0;
+
+if ($totalCasas > 0) {
+    $porcentajepagados = round(($totalPagados * 100) / $totalCasas, 0);
+    $porcentajenopagados = 100 - $porcentajepagados;
+    $pendientes = $totalCasas - $totalPagados;
+}
+?>
+
+<div class="container">
     <div class="row">
-    <div class="col-xs-12"><h4>Relacion de Pagos: <?php echo $mes2." - ".$ano; ?></h4></div>
-      <div class="col-xs-12">
-        <div class="progress">
-  <div class="progress-bar progress-bar-success" role="progressbar" style="width:<?php echo $porcentajepagados;?>%">
-    Pagado <?php echo $porcentajepagados."% (".$cantidadpagados[0].")";?>
-  </div>
-  <div class="progress-bar progress-bar-danger" role="progressbar" style="width:<?php echo $porcentajenopagados;?>%">
-    No Pagado <?php echo $porcentajenopagados."% (".($cantidad[0]-$cantidadpagados[0]).")";?>
-  </div>
+        <div class="col-xs-12">
+            <h4>Relacion de Pagos: <?php echo $mes2 . " - " . $ano; ?></h4>
+        </div>
+        <div class="col-xs-12">
+            <div class="progress">
+                <?php if ($totalCasas > 0): ?>
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:<?php echo $porcentajepagados; ?>%">
+                        Pagado <?php echo $porcentajepagados . "% (" . $totalPagados . ")"; ?>
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:<?php echo $porcentajenopagados; ?>%">
+                        No Pagado <?php echo $porcentajenopagados . "% (" . $pendientes . ")"; ?>
+                    </div>
+                <?php else: ?>
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 100%">
+                        No hay registros de casas disponibles
+                    </div>
+                <?php endif; ?>
+            </div>
+            <p>Total de casas: <strong><?php echo $totalCasas; ?></strong></p>
+        </div>
+    </div>
 </div>
         <div class="table-responsive">
           <table class="table table-condensed table-bordered">
