@@ -1,0 +1,29 @@
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 38
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 39
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 40
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 41
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 46
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 49
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 50
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 53
+[12-Oct-2015 13:54:12 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/syscomle/public_html/country/guardaMesesPagados.php:17) in /home/syscomle/public_html/country/guardaMesesPagados.php on line 36
+[12-Oct-2015 13:57:50 America/Monterrey] PHP Notice:  Undefined index: user in /home/syscomle/public_html/country/_mantto.php on line 10
+[12-Oct-2015 13:57:50 America/Monterrey] PHP Notice:  Undefined index: oper in /home/syscomle/public_html/country/_mantto.php on line 11
+[13-Oct-2015 18:29:36 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[13-Oct-2015 20:17:46 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[14-Oct-2015 13:44:26 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[14-Oct-2015 14:37:57 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[14-Oct-2015 19:31:10 America/Monterrey] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/change_password.php on line 124
+[15-Oct-2015 16:25:54 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[15-Oct-2015 21:33:43 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[16-Oct-2015 13:10:43 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[16-Oct-2015 20:35:38 America/Monterrey] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/syscomle/public_html/country/delete-comprobante.php:8) in /home/syscomle/public_html/country/delete-comprobante.php on line 10
+[16-Oct-2015 20:35:42 America/Monterrey] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/syscomle/public_html/country/delete-comprobante.php:8) in /home/syscomle/public_html/country/delete-comprobante.php on line 10
+[16-Oct-2015 20:38:32 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 00:54:48 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 09:22:46 America/Mexico_City] PHP Notice:  Undefined variable: tipo_Archivo in /home/syscomle/public_html/country/_oper_comprobante.php on line 104
+[17-Oct-2015 13:13:23 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 13:13:28 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 14:44:16 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 15:03:56 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[18-Oct-2015 21:33:39 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9

@@ -1,0 +1,113 @@
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 38
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 39
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 40
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 41
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 46
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 49
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 50
+[05-Oct-2015 18:10:41 America/Monterrey] PHP Notice:  Undefined index: redirect in /home/syscomle/public_html/country/panel_admin.php on line 53
+[12-Oct-2015 13:54:12 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/syscomle/public_html/country/guardaMesesPagados.php:17) in /home/syscomle/public_html/country/guardaMesesPagados.php on line 36
+[12-Oct-2015 13:57:50 America/Monterrey] PHP Notice:  Undefined index: user in /home/syscomle/public_html/country/_mantto.php on line 10
+[12-Oct-2015 13:57:50 America/Monterrey] PHP Notice:  Undefined index: oper in /home/syscomle/public_html/country/_mantto.php on line 11
+[13-Oct-2015 18:29:36 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[13-Oct-2015 20:17:46 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[14-Oct-2015 13:44:26 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[14-Oct-2015 14:37:57 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[14-Oct-2015 19:31:10 America/Monterrey] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/change_password.php on line 124
+[15-Oct-2015 16:25:54 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[15-Oct-2015 21:33:43 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[16-Oct-2015 13:10:43 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[16-Oct-2015 20:35:38 America/Monterrey] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/syscomle/public_html/country/delete-comprobante.php:8) in /home/syscomle/public_html/country/delete-comprobante.php on line 10
+[16-Oct-2015 20:35:42 America/Monterrey] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/syscomle/public_html/country/delete-comprobante.php:8) in /home/syscomle/public_html/country/delete-comprobante.php on line 10
+[16-Oct-2015 20:38:32 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 00:54:48 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 09:22:46 America/Mexico_City] PHP Notice:  Undefined variable: tipo_Archivo in /home/syscomle/public_html/country/_oper_comprobante.php on line 104
+[17-Oct-2015 13:13:23 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 13:13:28 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 14:44:16 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[17-Oct-2015 15:03:56 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[18-Oct-2015 21:33:39 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[18-Oct-2015 23:48:02 America/Mexico_City] PHP Notice:  Undefined variable: tipo_Archivo in /home/syscomle/public_html/country/_oper_comprobante.php on line 104
+[18-Oct-2015 23:50:10 America/Mexico_City] PHP Notice:  Undefined variable: tipo_Archivo in /home/syscomle/public_html/country/_oper_comprobante.php on line 104
+[18-Oct-2015 23:50:45 America/Mexico_City] PHP Notice:  Undefined variable: tipo_Archivo in /home/syscomle/public_html/country/_oper_comprobante.php on line 104
+[18-Oct-2015 23:51:45 America/Mexico_City] PHP Notice:  Undefined variable: tipo_Archivo in /home/syscomle/public_html/country/_oper_comprobante.php on line 104
+[18-Oct-2015 23:51:57 America/Mexico_City] PHP Notice:  Undefined variable: tipo_Archivo in /home/syscomle/public_html/country/_oper_comprobante.php on line 104
+[19-Oct-2015 09:44:08 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[19-Oct-2015 14:59:24 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[19-Oct-2015 17:49:56 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/public_html/country/inc/nav-panel-admin.php on line 9
+[19-Oct-2015 17:50:10 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 12
+[19-Oct-2015 17:51:13 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 12
+[19-Oct-2015 17:52:24 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 12
+[19-Oct-2015 17:52:54 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 12
+[19-Oct-2015 17:58:06 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 12
+[19-Oct-2015 17:58:06 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 106
+[19-Oct-2015 17:58:21 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 12
+[19-Oct-2015 17:58:21 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 106
+[19-Oct-2015 17:58:43 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 12
+[19-Oct-2015 17:58:43 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/public_html/country/_oper_comprobante.php on line 106
+[09-Aug-2020 00:06:12 America/Mexico_City] PHP Warning:  include(inc/nav-common.php): failed to open stream: No such file or directory in /home/syscomle/fraccionamientos.syscomleon.com/index.php on line 34
+[09-Aug-2020 00:06:12 America/Mexico_City] PHP Warning:  include(inc/nav-common.php): failed to open stream: No such file or directory in /home/syscomle/fraccionamientos.syscomleon.com/index.php on line 34
+[09-Aug-2020 00:06:12 America/Mexico_City] PHP Warning:  include(): Failed opening 'inc/nav-common.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/syscomle/fraccionamientos.syscomleon.com/index.php on line 34
+[09-Aug-2020 00:06:12 America/Mexico_City] PHP Warning:  include(inc/footer-common.php): failed to open stream: No such file or directory in /home/syscomle/fraccionamientos.syscomleon.com/index.php on line 70
+[09-Aug-2020 00:06:12 America/Mexico_City] PHP Warning:  include(inc/footer-common.php): failed to open stream: No such file or directory in /home/syscomle/fraccionamientos.syscomleon.com/index.php on line 70
+[09-Aug-2020 00:06:12 America/Mexico_City] PHP Warning:  include(): Failed opening 'inc/footer-common.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/syscomle/fraccionamientos.syscomleon.com/index.php on line 70
+[24-Aug-2020 20:00:14 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/panel-usuarios.php on line 9
+[24-Aug-2020 20:00:14 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/inc/nav-panel-admin.php on line 17
+[24-Aug-2020 20:00:14 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/inc/nav-panel-admin.php on line 17
+[24-Aug-2020 20:01:57 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/inc/nav-panel-admin.php on line 17
+[24-Aug-2020 20:58:59 America/Mexico_City] PHP Notice:  Undefined variable: typeOper in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 37
+[24-Aug-2020 20:58:59 America/Mexico_City] PHP Notice:  Undefined variable: loginUser in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 45
+[24-Aug-2020 20:58:59 America/Mexico_City] PHP Notice:  Undefined variable: password in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 59
+[24-Aug-2020 20:58:59 America/Mexico_City] PHP Notice:  Undefined variable: noCasa in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 73
+[24-Aug-2020 20:58:59 America/Mexico_City] PHP Notice:  Undefined variable: nameUser in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 87
+[24-Aug-2020 20:58:59 America/Mexico_City] PHP Notice:  Undefined variable: userLevel in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 102
+[24-Aug-2020 20:58:59 America/Mexico_City] PHP Notice:  Undefined variable: userLevel in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 103
+[24-Aug-2020 20:58:59 America/Mexico_City] PHP Notice:  Undefined variable: operacion in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 110
+[25-Aug-2020 09:47:16 America/Mexico_City] PHP Notice:  Undefined variable: typeOper in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 37
+[25-Aug-2020 09:47:16 America/Mexico_City] PHP Notice:  Undefined variable: loginUser in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 45
+[25-Aug-2020 09:47:16 America/Mexico_City] PHP Notice:  Undefined variable: password in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 59
+[25-Aug-2020 09:47:16 America/Mexico_City] PHP Notice:  Undefined variable: noCasa in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 73
+[25-Aug-2020 09:47:16 America/Mexico_City] PHP Notice:  Undefined variable: nameUser in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 87
+[25-Aug-2020 09:47:16 America/Mexico_City] PHP Notice:  Undefined variable: userLevel in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 102
+[25-Aug-2020 09:47:16 America/Mexico_City] PHP Notice:  Undefined variable: userLevel in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 103
+[25-Aug-2020 09:47:16 America/Mexico_City] PHP Notice:  Undefined variable: operacion in /home/syscomle/fraccionamientos.syscomleon.com/agregar_mensualidad.php on line 110
+[25-Aug-2020 19:40:27 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/inc/nav-panel-admin.php on line 17
+[29-Aug-2020 17:17:16 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/inc/nav-panel-admin.php on line 17
+[31-Aug-2020 12:21:52 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/inc/nav-panel-admin.php on line 17
+[31-Aug-2020 12:22:02 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/inc/nav-panel-admin.php on line 17
+[31-Aug-2020 12:23:39 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/fraccionamientos.syscomleon.com/_oper_comprobante.php on line 12
+[31-Aug-2020 12:23:57 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/fraccionamientos.syscomleon.com/_oper_comprobante.php on line 105
+[31-Aug-2020 12:23:59 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/fraccionamientos.syscomleon.com/_oper_comprobante.php on line 12
+[31-Aug-2020 12:24:19 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/fraccionamientos.syscomleon.com/_oper_comprobante.php on line 105
+[31-Aug-2020 12:24:20 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/fraccionamientos.syscomleon.com/_oper_comprobante.php on line 12
+[31-Aug-2020 12:24:34 America/Mexico_City] PHP Notice:  Undefined index: id_user in /home/syscomle/fraccionamientos.syscomleon.com/_oper_comprobante.php on line 105
+[31-Aug-2020 12:24:35 America/Mexico_City] PHP Notice:  Undefined index: level_user in /home/syscomle/fraccionamientos.syscomleon.com/inc/nav-panel-admin.php on line 17
+[31-Aug-2020 12:29:35 America/Mexico_City] PHP Notice:  Undefined variable: mes in /home/syscomle/fraccionamientos.syscomleon.com/_oper_presupuestos.php on line 84
+[31-Aug-2020 12:29:35 America/Mexico_City] PHP Notice:  Undefined variable: mes in /home/syscomle/fraccionamientos.syscomleon.com/_oper_presupuestos.php on line 93
+[31-Aug-2020 14:32:07 America/Mexico_City] PHP Notice:  Undefined variable: mes in /home/syscomle/fraccionamientos.syscomleon.com/_oper_presupuestos.php on line 84
+[31-Aug-2020 14:32:07 America/Mexico_City] PHP Notice:  Undefined variable: mes in /home/syscomle/fraccionamientos.syscomleon.com/_oper_presupuestos.php on line 93
+[01-Sep-2020 16:26:29 America/Mexico_City] PHP Notice:  Undefined index: casa in /home/syscomle/fraccionamientos.syscomleon.com/ver-meses-pagados.php on line 229
+[01-Sep-2020 16:26:44 America/Mexico_City] PHP Notice:  Undefined index: casa in /home/syscomle/fraccionamientos.syscomleon.com/ver-meses-pagados.php on line 229
+[01-Sep-2020 16:26:47 America/Mexico_City] PHP Notice:  Undefined index: casa in /home/syscomle/fraccionamientos.syscomleon.com/ver-meses-pagados.php on line 229
+[24-Apr-2022 02:45:15 America/Mexico_City] PHP Notice:  Undefined index: email_country_login in /home/syscomle/fraccionamientos.syscomleon.com/verifyLogin.php on line 8
+[24-Apr-2022 02:45:15 America/Mexico_City] PHP Notice:  Undefined index: password_country_login in /home/syscomle/fraccionamientos.syscomleon.com/verifyLogin.php on line 9
+[26-Dec-2025 09:48:02 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/syscomle/fraccionamientos.syscomleon.com/configPHP/conecta.inc.php:4
+Stack trace:
+#0 /home/syscomle/fraccionamientos.syscomleon.com/verifyLogin.php(6): Conecta()
+#1 {main}
+  thrown in /home/syscomle/fraccionamientos.syscomleon.com/configPHP/conecta.inc.php on line 4
+[26-Dec-2025 09:49:43 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/syscomle/fraccionamientos.syscomleon.com/configPHP/conecta.inc.php:4
+Stack trace:
+#0 /home/syscomle/fraccionamientos.syscomleon.com/verifyLogin.php(6): Conecta()
+#1 {main}
+  thrown in /home/syscomle/fraccionamientos.syscomleon.com/configPHP/conecta.inc.php on line 4
+[26-Dec-2025 09:49:45 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/syscomle/fraccionamientos.syscomleon.com/configPHP/conecta.inc.php:4
+Stack trace:
+#0 /home/syscomle/fraccionamientos.syscomleon.com/verifyLogin.php(6): Conecta()
+#1 {main}
+  thrown in /home/syscomle/fraccionamientos.syscomleon.com/configPHP/conecta.inc.php on line 4
+[26-Dec-2025 09:49:50 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/syscomle/fraccionamientos.syscomleon.com/configPHP/conecta.inc.php:4
+Stack trace:
+#0 /home/syscomle/fraccionamientos.syscomleon.com/verifyLogin.php(6): Conecta()
+#1 {main}
+  thrown in /home/syscomle/fraccionamientos.syscomleon.com/configPHP/conecta.inc.php on line 4

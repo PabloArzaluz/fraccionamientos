@@ -1,0 +1,8 @@
+@media print {
+	header, footer { display: none; }
+	body { background: #fff; color: #000; }
+}
+
+.tabla-minima{
+	font-size: 8pt;
+}
