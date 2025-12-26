@@ -68,13 +68,24 @@
   if ($mes2=="October") $mes2="Octubre";
   if ($mes2=="November") $mes2="Noviembre";
   if ($mes2=="December") $mes2="Diciembre";
- $fechaActual = $ano."-".$mes."-01";
+    $fechaActual = $ano."-".$mes."-01";
     $conocercantidad = mysqli_query($mysqliConn, "select COUNT(DISTINCT id_user) from  user where level=0;") or die(mysqli_error($mysqliConn));
-    $cantidad = mysqli_fetch_row($conocercantidad);
+    $filaCantidad = mysqli_fetch_row($conocercantidad);
+    $totalCasas = $filaCantidad[0] ?? 0;
+    
     $conocerpagados = mysqli_query($mysqliConn,"select count(DISTINCT id_mensualidad) from mensualidades where fecha='$fechaActual';") or die(mysqli_error($mysqliConn));
-    $cantidadpagados = mysqli_fetch_row($conocerpagados);
-    $porcentajepagados = round(($cantidadpagados[0] * 100 ) / $cantidad[0],0);
-    $porcentajenopagados = 100 - $porcentajepagados ;
+    $filaPagados = mysqli_fetch_row($conocerpagados);
+    $totalPagados = $filaPagados[0] ?? 0;
+
+    $porcentajepagados = 0;
+    $porcentajenopagados = 0;
+
+    if($totalCasas > 0){
+      $porcentajepagados = round(($cantidadpagados[0] * 100 ) / $cantidad[0],0);
+      $porcentajenopagados = 100 - $porcentajepagados ;
+    }
+
+    
     echo "<strong>".$cantidadpagados[0]."</strong>";
   ?> casas pagadas, de un total de <strong><?php echo $cantidad[0]?></strong> casas.
   </div>
