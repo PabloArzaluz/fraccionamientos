@@ -14,7 +14,7 @@
   		$nombre_user = $_POST['name-user'];
   		$level_user = $_POST['nivel-user'];
   		$inserta_usuario = mysqli_query($mysqliConn,"insert into user(user_login,nombre,password,no_casa,level) values('$login_user','$nombre_user','$password','$no_casa',$level_user);") or die(mysqli_error($mysqliConn));
-      $id_insertado = mysql_insert_id();
+      $id_insertado = mysqli_insert_id($mysqliConn);
       $insertar_mantto = mysqli_query($mysqliConn,"insert into mantto(id_user,estatus) values($id_insertado,0);") or die(mysqli_error($mysqliConn));
   		$_SESSION['redirect'] = "users";
   		header("Location: panel_admin.php");
