@@ -51,43 +51,43 @@
         <div class="panel panel-danger">
         <div class="panel-heading"><h4 class="panel-title" id="sin-salto-h">Pago de Mantenimiento</h4> <span class="label label-success">Aviso Fijado</span></div>
   <div class="panel-body">
-    Hasta el dia de hoy solo se llevan <?php
+<?php
+$ano = date("Y");
+$mes = date("m");
 
-     $ano = date("Y");
-  $mes = date("m"); 
- $mes2=date("F");
-  if ($mes2=="January") $mes2="Enero";
-  if ($mes2=="February") $mes2="Febrero";
-  if ($mes2=="March") $mes2="Marzo";
-  if ($mes2=="April") $mes2="Abril";
-  if ($mes2=="May") $mes2="Mayo";
-  if ($mes2=="June") $mes2="Junio";
-  if ($mes2=="July") $mes2="Julio";
-  if ($mes2=="August") $mes2="Agosto";
-  if ($mes2=="September") $mes2="Setiembre";
-  if ($mes2=="October") $mes2="Octubre";
-  if ($mes2=="November") $mes2="Noviembre";
-  if ($mes2=="December") $mes2="Diciembre";
-    $fechaActual = $ano."-".$mes."-01";
-    $conocercantidad = mysqli_query($mysqliConn, "select COUNT(DISTINCT id_user) from  user where level=0;") or die(mysqli_error($mysqliConn));
-    $filaCantidad = mysqli_fetch_row($conocercantidad);
-    $totalCasas = $filaCantidad[0] ?? 0;
-    
-    $conocerpagados = mysqli_query($mysqliConn,"select count(DISTINCT id_mensualidad) from mensualidades where fecha='$fechaActual';") or die(mysqli_error($mysqliConn));
-    $filaPagados = mysqli_fetch_row($conocerpagados);
-    $totalPagados = $filaPagados[0] ?? 0;
+// Forma optimizada de traducir el mes
+$meses = [
+    "January" => "Enero", "February" => "Febrero", "March" => "Marzo", 
+    "April" => "Abril", "May" => "Mayo", "June" => "Junio", 
+    "July" => "Julio", "August" => "Agosto", "September" => "Septiembre", 
+    "October" => "Octubre", "November" => "Noviembre", "December" => "Diciembre"
+];
+$mesNombre = $meses[date("F")];
 
-    $porcentajepagados = 0;
-    $porcentajenopagados = 0;
+$fechaActual = $ano . "-" . $mes . "-01";
 
-    if($totalCasas > 0){
-      $porcentajepagados = round(($cantidadpagados[0] * 100 ) / $cantidad[0],0);
-      $porcentajenopagados = 100 - $porcentajepagados ;
-    }
+// 1. Obtener total de casas
+$conocercantidad = mysqli_query($mysqliConn, "SELECT COUNT(DISTINCT id_user) FROM user WHERE level=0") or die(mysqli_error($mysqliConn));
+$filaCantidad = mysqli_fetch_row($conocercantidad);
+$totalCasas = (int)($filaCantidad[0] ?? 0);
 
-    
-    echo "<strong>".$totalPagados."</strong>";
-  ?> casas pagadas, de un total de <strong><?php echo $totalCasas; ?></strong> casas.
+// 2. Obtener total de pagados
+$conocerpagados = mysqli_query($mysqliConn, "SELECT COUNT(DISTINCT id_mensualidad) FROM mensualidades WHERE fecha='$fechaActual'") or die(mysqli_error($mysqliConn));
+$filaPagados = mysqli_fetch_row($conocerpagados);
+$totalPagados = (int)($filaPagados[0] ?? 0);
+
+// 3. Cálculos (Corregido: usando las variables correctas)
+$porcentajepagados = 0;
+$porcentajenopagados = 100; // Si no hay casas, el 100% está "pendiente" o 0 según prefieras
+
+if ($totalCasas > 0) {
+    // Usamos las variables que definimos arriba
+    $porcentajepagados = round(($totalPagados * 100) / $totalCasas, 0);
+    $porcentajenopagados = 100 - $porcentajepagados;
+}
+
+echo "Hasta el día de hoy en <strong>$mesNombre</strong> se llevan <strong>$totalPagados</strong> casas pagadas, de un total de <strong>$totalCasas</strong> casas.";
+?>
   </div>
   
 </div>
