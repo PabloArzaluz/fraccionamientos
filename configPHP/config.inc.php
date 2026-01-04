@@ -19,7 +19,7 @@
 	if (!isset($_SESSION['id_usuario'])) {
 		// Si no es la página de login, redirigir al usuario
 		// Nota: Asegúrate de que tu archivo de login NO incluya esta validación
-		header("Location: login.php");
+		header("Location: index.php");
 		exit();
 	}
 	?>
