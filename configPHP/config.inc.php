@@ -13,14 +13,17 @@
 	mysqli_set_charset($mysqliConn, "utf8");
 
 
-	// 2. Validación simple de acceso
-	// Verificamos si existe la variable de sesión que identifica al usuario
-	// Si no existe, significa que la sesión expiró por tiempo natural o nunca se inició
-	if (!isset($_SESSION['id_usuario'])) {
-		// Si no es la página de login, redirigir al usuario
-		// Nota: Asegúrate de que tu archivo de login NO incluya esta validación
-		header("Location: index.php");
-		exit();
-	}
-	?>
+	// Detectar el nombre del archivo actual
+	$archivo_actual = basename($_SERVER['PHP_SELF']);
+
+	// 2. Validación simple de acceso con EXCEPCIÓN
+	// Solo validamos si NO estamos en index.php ni en verifyLogin.php
+	if ($archivo_actual != 'index.php' && $archivo_actual != 'verifyLogin.php') {
+    
+    // Verificamos si existe la variable de sesión
+    if (!isset($_SESSION['id_user'])) { // OJO: En tu verifyLogin usaste 'id_user', no 'id_usuario'
+        header("Location: index.php");
+        exit();
+    }
+}
 ?>
