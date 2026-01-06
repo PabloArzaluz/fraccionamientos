@@ -1,1 +1,3 @@
-configPHP/conecta.inc.php
+configPHP/config.inc.php
+error_log
+.htaccess
