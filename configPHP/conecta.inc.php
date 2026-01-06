@@ -1,17 +1,13 @@
 <?php
-	
-	$dbhost="localhost";
-	$dbuser="root";
-	$dbpass="";
-	$dbname="fraccionamientos";
-    
-	$nombre_fraccionamiento = "Residencial El Cielo";  //se utiliza para las vistas
+// conecta.inc.php
+require_once __DIR__ . '/config.inc.php';
 
-	//Remote Database
-	/*
-	$dbhost="localhost";
-	$dbuser="syscomle_country";
-	$dbpass="Qw3rty2012%";
-	$dbname="syscomle_country";
-	*/
-?>
+$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+if (!$mysqli) {
+    die("Error de conexión MySQL: " . mysqli_connect_error());
+}
+
+if (!empty($dbcharset)) {
+    mysqli_set_charset($mysqli, $dbcharset);
+}

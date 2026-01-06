@@ -5,7 +5,7 @@
 <tr><th>Titulo</th><th>Descripcion</th><th>Fecha</th><th>Hora</th><th>Autor</th></tr>
 </thead>
 <?php
-            /*$consulta_noti = mysqli_query($mysqliConn,"SELECT id_noti,titulo,texto,fecha,noti.id_user,hora,user.nombre FROM noti inner join user on user.id_user=noti.id_user;") or die(mysqli_error($mysqliConn));
+            /*$consulta_noti = mysqli_query($mysqli,"SELECT id_noti,titulo,texto,fecha,noti.id_user,hora,user.nombre FROM noti inner join user on user.id_user=noti.id_user;") or die(mysqli_error($mysqli));
             while($arr_usuarios = mysqli_fetch_array($consulta_noti)){ 
             	echo "<tr><td></td></tr>";
             } 

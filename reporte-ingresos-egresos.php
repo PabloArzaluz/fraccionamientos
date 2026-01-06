@@ -1,0 +1,380 @@
+<?php
+
+	session_start();
+
+  include('configPHP/conecta.inc.php');
+
+  include('configPHP/config.inc.php');
+
+  
+
+  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
+
+  
+
+  date_default_timezone_set('America/Mexico_City');
+
+  if(!isset($_SESSION['id_user'])){
+		header('Location:index.php');
+		die();
+	}
+
+   $current_page_admin = "reporte-ingresos-egresos";
+
+
+
+  function acortar($texto,$largo) {
+
+        if(strlen($texto) >= 20){
+
+            return substr($texto,0,$largo).'...';
+
+        }else{
+
+            return $texto;
+
+        }
+
+    }
+
+  
+
+?>
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+  <head>
+
+    <title><?php echo $_SESSION['nombre-sitio']; ?> :: Reporte Ingresos y Egresos</title>
+
+    <?php include("inc/head-common.php"); ?>
+
+
+
+  </head>
+
+
+
+  <body>
+
+  <?php 
+
+  	include("inc/nav-common.php")
+
+  ?>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-xs-12">
+
+        <ol class="breadcrumb">
+
+          <li><a href="index.php"><?php echo $_SESSION['nombre-sitio']; ?></a></li>
+
+          <li class="active">Panel de Administracion</li>
+
+        </ol>
+
+      </div>
+
+    </div>
+
+  </div>
+
+<div class="container">
+
+<?php include("inc/nav-panel-admin.php"); ?>
+
+<br>
+
+  <div class="row">
+
+    <div class="col-xs-12">
+
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+
+            Reporte de Ingresos y Egresos
+
+          </div>
+
+          <?php
+            $FECHA_INICIO_HISTORIA = "select fecha_inicio from config_site;";
+
+                    $INY_FECHA_INICIO_HISTORIA = mysqli_query($mysqli,$FECHA_INICIO_HISTORIA) or die(mysqli_error($mysqli));
+
+                    $F_FECHA_INICIAL = mysqli_fetch_array($INY_FECHA_INICIO_HISTORIA);
+
+                    $fecha_inicial = substr($F_FECHA_INICIAL[0], 0,4)."-".substr($F_FECHA_INICIAL[0], 5,2)."-01";
+
+                    
+
+                    $fechaActual = date("Y")."-".date("m")."-01";
+
+
+
+                    $fechas_completas = array(); 
+
+
+
+                    $fechaaamostar = $fecha_inicial;
+
+                     
+
+
+
+                    for($i=$fecha_inicial;$i<=$fechaActual;$i = date("Y-m-d", strtotime($i ."+ 1 month"))){
+
+                      $fechas_completas[] =$i;
+
+                    }
+
+                    
+
+           ?>
+
+          <div class="panel-body">
+
+          <form class="form-horizontal" action="_reporte-ingresos-egresos.php" method="GET">
+
+            <div class="row">
+
+      <div class="col-lg-6 col-lg-offset-3 col-xs-12">
+
+           <div class="row">
+
+          <div class="col-xs-12">
+
+            <div class="form-group">
+
+              <label for="inputName" class="control-label col-md-4 col-xs-3">Seleccionar Mes</label>
+
+              <div class="col-md-8 col-xs-9">
+
+                  <select class="form-control" id="sel1" required name="mes" required>
+
+                  <option value="">Seleccionar un Mes</option>
+
+                  <?php
+
+                     foreach(array_reverse($fechas_completas) as $fechas){
+
+                      $ano = substr($fechas, 0,4);
+
+                      $mes = substr($fechas, 5,2);
+
+                      if($mes == '01')
+
+                            $mesEspanol = "Enero";
+
+                        if($mes == '02')
+
+                            $mesEspanol = "Febrero";
+
+                        if($mes == '03')
+
+                            $mesEspanol = "Marzo";
+
+                        if($mes == '04')
+
+                            $mesEspanol = "Abril";
+
+                        if($mes == '05')
+
+                            $mesEspanol = "Mayo";
+
+                        if($mes == '06')
+
+                            $mesEspanol = "Junio";
+
+                        if($mes == '07')
+
+                            $mesEspanol = "Julio";
+
+                        if($mes == '08')
+
+                            $mesEspanol = "Agosto";
+
+                        if($mes == '09')
+
+                            $mesEspanol = "Septiembre";
+
+                        if($mes == '10')
+
+                            $mesEspanol = "Octubre";
+
+                        if($mes == '11')
+
+                            $mesEspanol = "Noviembre";
+
+                        if($mes == '12')
+
+                            $mesEspanol = "Diciembre";
+
+
+
+                      echo "<option value='".$fechas."'>".$mesEspanol." del ".$ano."</option>";
+
+                     }
+
+                     
+
+                    
+
+                  ?>
+
+                </select>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>           
+
+      </div>
+
+      
+
+      <div class="col-lg-6 col-lg-offset-3 col-xs-12">
+
+        
+
+      <div class="col-xs-12 col-lg-12">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <div class="form-group">
+
+              
+
+              <div class="col-xs-12">
+
+                <div class="text-right">
+
+        <button type="submit" class="btn btn-success">Generar Reporte</button>
+
+      </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>              
+
+      </div>
+
+  </div>
+
+  </form>
+
+        </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+
+  <?php 
+
+		include("inc/footer-common.php");
+
+	?>
+
+  <script>
+
+$(document).ready(function(){
+
+    $('[data-toggle="tooltip"]').tooltip(); 
+
+});
+
+</script>
+
+  <script type="text/javascript">
+
+  $('#myTabs a').click(function (e) {
+
+  e.preventDefault()
+
+  $(this).tab('show')
+
+})
+
+</script>
+
+ <script src="js/bootstrap-datepicker.min.js"></script>
+
+        <script src="locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+
+        <script type="text/javascript">
+
+            // When the document is ready
+
+            $(document).ready(function () {
+
+                
+
+                $('#selector-fecha1').datepicker({
+
+                    format: "yyyy-mm-dd",
+
+                    
+
+                    language: "es",
+
+                    autoclose: true,
+
+                    todayHighlight: true,
+
+                    toolbarPlacement:"top",
+
+                    orientation: "bottom auto"
+
+                });  
+
+                $('#selector-fecha2').datepicker({
+
+                    format: "yyyy-mm-dd",
+
+                    
+
+                    language: "es",
+
+                    autoclose: true,
+
+                    todayHighlight: true,
+
+                    toolbarPlacement:"bottom"
+
+                }); 
+
+               
+
+                           
+
+            });
+
+        </script>
+
+    </body>
+
+</html>
+

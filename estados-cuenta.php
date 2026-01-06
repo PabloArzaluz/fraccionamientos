@@ -1,15 +1,15 @@
 <?php
 	session_start();
-  
+  include('configPHP/conecta.inc.php');
   include('configPHP/config.inc.php');
   $actual_page = "estados";
-  
+  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
   $mesActual  = date('m');
   $anoActual = date('Y');
   $fechaActual = $anoActual."-".$mesActual."-01"; 
   
   date_default_timezone_set('America/Mexico_City');
-
+  include("inc/config-site.php");
 function getUltimoDiaMes($elAnio,$elMes) {
   return date("d",(mktime(0,0,0,$elMes+1,1,$elAnio)-1));
   }
@@ -36,7 +36,7 @@ function getUltimoDiaMes($elAnio,$elMes) {
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Comprobantes de Gasto :: <?php echo $nombre_fraccionamiento; ?></title>
+    <title>Comprobantes de Gasto :: <?php echo $_SESSION['nombre-sitio']; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -58,6 +58,7 @@ function getUltimoDiaMes($elAnio,$elMes) {
       
     }
      </script>
+        <link href="css/style_web.css" rel="stylesheet">
 
   </head>
 
@@ -70,7 +71,7 @@ function getUltimoDiaMes($elAnio,$elMes) {
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
+          <li><a href="index.php"><?php echo $_SESSION['nombre-sitio']; ?></a></li>
           <li class="active">Estados de Cuenta</li>
         </ol>
       </div>
@@ -91,7 +92,13 @@ function getUltimoDiaMes($elAnio,$elMes) {
           <div class="col-xs-11 col-sm-6 col-md-3 text-right">
 
       <?php 
-        $consulta_mes = mysqli_query($mysqliConn,"SELECT YEAR(fecha) AS anio, MONTH(fecha) AS mes FROM estados GROUP BY anio, mes ORDER BY anio DESC, mes DESC") or die(mysqli_error($mysqliConn));
+        $consulta_mes = mysqli_query($mysqli,"SELECT DISTINCT
+    YEAR(fecha)  AS anio,
+    MONTH(fecha) AS mes
+FROM estados
+WHERE fecha IS NOT NULL
+ORDER BY anio DESC, mes DESC;
+") or die(mysqli_error($mysqli));
         if(mysqli_num_rows($consulta_mes)>0){
           echo "<select class='form-control'  id='generaFecha' onchange='cambiarMes()' required>";
           echo "<option value=''>Seleccione un Mes</option>";
@@ -129,7 +136,7 @@ function getUltimoDiaMes($elAnio,$elMes) {
 <?php
 //echo $fechaRequerida;
 //echo $fecha_entre;
-  $consulta_comprobantes = mysqli_query($mysqliConn,"SELECT * FROM estados where fecha BETWEEN '$fechaRequerida' and '$fecha_entre';") or die(mysqli_error($mysqliConn));
+  $consulta_comprobantes = mysqli_query($mysqli,"SELECT * FROM estados where fecha BETWEEN '$fechaRequerida' and '$fecha_entre';") or die(mysqli_error($mysqli));
   while($Arrcomprobantes = mysqli_fetch_array($consulta_comprobantes)){ 
       if ($Arrcomprobantes[5]=="pdf") {
              /*echo "<a href='visor.php?oper=$Arrcomprobantes[2]' class='btn btn-success btn-xs'>ver</a></div></td></tr>";*/
@@ -139,7 +146,7 @@ function getUltimoDiaMes($elAnio,$elMes) {
                       
                       <div class='caption'>
                         <h4>".$Arrcomprobantes[1]."</h4>
-                        <span>".$Arrcomprobantes[4]."</span><br><br>
+                        <span class='text-small'>".$Arrcomprobantes[4]."</span><br><br>
                         <span><a href='visor.php?oper=$Arrcomprobantes[2]' class='btn btn-sm btn-primary' role='button'>Ver Archivo Original </a></span> <span class='label label-danger'>PDF</span>
                       </div>
                     </div>
@@ -154,7 +161,7 @@ function getUltimoDiaMes($elAnio,$elMes) {
                       
                       <div class='caption'>
                         <h4>".$Arrcomprobantes[1]."</h4>
-                        <span>".$Arrcomprobantes[4]."</span><br><br>
+                        <span class='text-small'>".$Arrcomprobantes[4]."</span><br><br>
                         <span><a href='$Arrcomprobantes[2]' class='btn btn-sm btn-primary' role='button'>Ver Archivo Original </a></span> <span class='label label-success'>JPG</span>
                       </div>
                     </div>

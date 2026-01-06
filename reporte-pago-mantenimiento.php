@@ -1,21 +1,22 @@
 <?php
 
 	session_start();
-    
+    include('configPHP/conecta.inc.php');
     include('configPHP/config.inc.php');
-    
+    ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
     
 ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Reporte de Pagos de Mantenimientos :: <?php echo $nombre_fraccionamiento; ?> I</title>
+        <title>Reporte de Pagos de Mantenimientos :: Country del Lago I</title>
         <?php include("inc/head-common.php"); ?>
         <link rel="stylesheet" href="css/print.css" type="text/css" media="print"/>
     </head>
     <body>
         <div class="container">
-    <div>
+			
+    
         <div class="row"><h2>Casas Pagadas</h2></div>
         
             <?php
@@ -38,7 +39,7 @@
                  echo "<div class='row'><div class='col-xs-12'></div></div>";
                 $pagadas = 0;
                 echo "<div class='row'>";
-                $consulta_mantto = mysqli_query($mysqliConn,"select user.id_user,user.no_casa,mensualidades.fecha from user inner join mensualidades on user.id_user = mensualidades.id_user where mensualidades.fecha = '$fechaActual' order by user.no_casa;") or die(mysqli_error($mysqliConn));
+                $consulta_mantto = mysqli_query($mysqli,"select user.id_user,user.no_casa,mensualidades.fecha from user inner join mensualidades on user.id_user = mensualidades.id_user where mensualidades.fecha = '$fechaActual' order by user.no_casa;") or die(mysqli_error($mysqli));
                 while($arr_mantto = mysqli_fetch_array($consulta_mantto)){ 
                     $pagadas = $pagadas+1;
                     echo "<div class='col-xs-2'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span> $arr_mantto[1]</div>"; 
@@ -56,7 +57,7 @@
             <div class="row">
                 <?php
           $nopagadas = 0;
-            $consulta_mantto = mysqli_query($mysqliConn,"SELECT * FROM user WHERE id_user NOT IN (select user.id_user from user inner join mensualidades on user.id_user = mensualidades.id_user where mensualidades.fecha = '$fechaActual' order by no_casa) and user.level=0;") or die(mysqli_error($mysqliConn));
+            $consulta_mantto = mysqli_query($mysqli,"SELECT * FROM user WHERE id_user NOT IN (select user.id_user from user inner join mensualidades on user.id_user = mensualidades.id_user where mensualidades.fecha = '$fechaActual' order by no_casa) and user.level=0;") or die(mysqli_error($mysqli));
             while($arr_mantto = mysqli_fetch_array($consulta_mantto)){ 
               $nopagadas = $nopagadas +1;
               echo "<div class='col-xs-2'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>$arr_mantto[1]</div>";
@@ -65,11 +66,19 @@
         </div>
         <br>
         <div class="row">
-        <div class="col-xs-12">
-          <?php echo "<h4>Total: ".$nopagadas."</h4>"; ?>
-        </div>
-      </div>
+        	<div class="col-xs-12">
+          		<?php echo "<h4>Total: ".$nopagadas."</h4>"; ?>
+        	</div>
+      	</div>
+		  <br>
+		  <div class="row">
+        		<div class="col-xs-12">
+				<button type="button" id="load" class="btn btn-danger btn-md" onclick="location.href='panel-estatus-mantenimiento.php'" ><span class='glyphicon glyphicon-circle-arrow-left' aria-hidden='true'></span> Regresar</button>
+        		</div>
+      		</div>
     </div>
+	
+	
   </body>
 </html>
 

@@ -1,8 +1,8 @@
 <?php
 	session_start();
-  
+  include('configPHP/conecta.inc.php');
   include('configPHP/config.inc.php');
-  
+  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
   
   date_default_timezone_set('America/Mexico_City');
 
@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title><?php echo $nombre_fraccionamiento; ?> :: Panel Admin</title>
+    <title>Country del Lago :: Panel Admin</title>
     <?php include("inc/head-common.php"); ?>
   </head>
 
@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
+          <li><a href="index.php">Country del Lago</a></li>
           <li class="active">Panel de Administracion</li>
         </ol>
       </div>

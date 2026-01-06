@@ -1,8 +1,8 @@
 <?php
 	session_start();
-  
+  include('configPHP/conecta.inc.php');
   include('configPHP/config.inc.php');
-  
+  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
   
   $actual_page = "notificaciones";
 ?>
@@ -17,7 +17,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Cambiar Contraseña :: <?php echo $nombre_fraccionamiento; ?></title>
+    <title>Cambiar Contraseña :: Country del Lago</title>
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
+          <li><a href="index.php">Country del Lago</a></li>
           <li class="active">Cambiar Contraseña</li>
         </ol>
       </div>
@@ -121,7 +121,7 @@
           <div class="col-xs-12">
             <div class="form-group text-right">
             <?php 
-              $conocerPassword = mysqli_query($mysqliConn,"select password from user where id_user=".$_SESSION['id_user'].";") or die(mysqli_error($mysqliConn));
+              $conocerPassword = mysqli_query($mysqli,"select password from user where id_user=".$_SESSION['id_user'].";") or die(mysqli_error($mysqli));
               $pass = mysqli_fetch_row($conocerPassword);
             ?>
               <a href="#" onclick="validarPassword('<?php echo $pass[0]; ?>');" class="btn btn-success">Cambiar Contraseña</a>

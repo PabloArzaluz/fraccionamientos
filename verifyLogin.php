@@ -1,47 +1,49 @@
 <?php 
-session_start();
-include('configPHP/config.inc.php');
+	session_start();
+	require_once 'configPHP/conecta.inc.php';
+	require_once 'inc/config-site.php';
 
-// 1. Verificamos que los datos realmente existan antes de usarlos
-// El operador ?? "" asigna un string vacío si la llave no existe, evitando el Warning
-$user = $_POST['email_country_login'] ?? "";
-$password = $_POST['password_country_login'] ?? "";
+	// Recibir datos
+	$user     = $_POST['email_country_login'] ?? '';
+	$password = $_POST['password_country_login'] ?? '';
 
-// Si el usuario intentó entrar a este archivo sin enviar el formulario
-if (empty($user) || empty($password)) {
-    header("Location: index.php?alert=datos_vacios");
-    exit();
-}
+	// Validación mínima
+	if ($user === '' || $password === '') {
+		header("Location: index.php?alert=1");
+		exit;
+	}
 
-// 2. Preparamos la consulta
-$stmt = $mysqliConn->prepare("SELECT * FROM user WHERE user_login = ? AND password = ?");
+	// Prepared Statement
+	$sql = "SELECT * FROM user WHERE user_login = ? AND password = ? LIMIT 1";
+	$stmt = mysqli_prepare($mysqli, $sql);
 
-// 3. Enlazamos las variables
-$stmt->bind_param("ss", $user, $password);
+	if (!$stmt) {
+		die("Error en prepare: " . mysqli_error($mysqli));
+	}
 
-// 4. Ejecutamos
-$stmt->execute();
-$resultado = $stmt->get_result();
+	mysqli_stmt_bind_param($stmt, "ss", $user, $password);
+	mysqli_stmt_execute($stmt);
 
-// 5. Verificamos si hubo coincidencia
-if($resultado->num_rows > 0){
-    $row = $resultado->fetch_array();
-    
-    // Es vital regenerar el ID al iniciar sesión para evitar Session Fixation
-    session_regenerate_id(true);
-    
-    $_SESSION['id_user'] = $row[0];
-    $_SESSION['name_user'] = htmlspecialchars_decode($row[2]);
-    $_SESSION['level_user'] = $row[5];
-    $_SESSION['redirect'] = "avisos";
-    
-    // Marca de tiempo opcional para control interno (aunque uses el default)
-    $_SESSION['ultimo_acceso'] = time();
-    
-    header("Location: notificaciones.php");
-    exit(); 
-} else {
-    header("Location: index.php?alert=1");
-    exit();
-}
-?>
+	$result = mysqli_stmt_get_result($stmt);
+
+	if ($result && mysqli_num_rows($result) > 0) {
+
+		$row = mysqli_fetch_assoc($result);
+
+		$_SESSION['id_user']    = $row['id_user'] ?? $row[0];
+		$_SESSION['name_user']  = htmlspecialchars_decode($row['nombre'] ?? $row[2]);
+		$_SESSION['level_user'] = $row['level'] ?? $row[5];
+		$_SESSION['redirect']   = "avisos";
+
+		// Validar acceso por nivel
+		if ($_SESSION['level_user'] == 3) {
+			header("Location: vista_estatus_mantto.php");
+		} else {
+			header("Location: notificaciones.php");
+		}
+		exit;
+
+	} else {
+		header("Location: index.php?alert=1");
+		exit;
+	}

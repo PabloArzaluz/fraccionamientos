@@ -1,19 +1,17 @@
-<?php 
-	 session_start();
-  	include('configPHP/config.inc.php');
+<?php
+    session_start();
+    include('configPHP/conecta.inc.php');
+    include('configPHP/config.inc.php');
+    $actual_page = "estados";
+    ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
+    include("inc/config-site.php");
+    
+    $mesActual  = date('m');
+    $anoActual = date('Y');
+    $fechaActual = $anoActual."-".$mesActual."-01"; 
+    
     date_default_timezone_set('America/Mexico_City');
 
-    $user = $_GET['i'];
-
-    $conocerEstadoActual = mysqli_query($mysqliConn,"select adeudo from user where id_user=$user") or die(mysql_error($mysqliConn));
-    $muestraEstadoActual = mysqli_fetch_row($conocerEstadoActual);
-
-    if($muestraEstadoActual[0] == 0){
-      $consulta = "update user set adeudo=1 where id_user=$user;";
-      $actualizaEstado = mysqli_query($mysqliConn,$consulta) or die(mysql_error($mysqliConn));
-    }else{
-      $consulta = "update user set adeudo=0 where id_user=$user;";
-      $actualizaEstado = mysqli_query($mysqliConn,$consulta) or die(mysql_error($mysqliConn));
-    }
-    header("Location: panel-estatus-mantenimiento.php");
- ?>
+    echo "Agregar/Eliminar ADeudo";
+    echo $id_usuario = $_GET['i'];
+?>

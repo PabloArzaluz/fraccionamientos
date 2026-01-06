@@ -1,19 +1,20 @@
 <?php
   session_start();
-  
+  include('configPHP/conecta.inc.php');
   include('configPHP/config.inc.php');
-  
+  ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
   
   if($_GET['agre'] == "add"){
     $operacion = "Agregar";
   }elseif ($_GET['oper'] == "edit") {
     $operacion = "Editar";
   }
+  include("inc/config-site.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title><?php echo $nombre_fraccionamiento; ?> :: <?php echo $operacion; ?> Presupuestos</title>
+    <title><?php echo $_SESSION['nombre-sitio']; ?> :: <?php echo $operacion; ?> Presupuestos</title>
     <?php include("inc/head-common.php"); ?>
     <script type="text/javascript">
     function verify_ext(form, file) { 
@@ -52,7 +53,7 @@
     <div class="row">
       <div class="col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="index.php"><?php echo $nombre_fraccionamiento; ?></a></li>
+          <li><a href="index.php"><?php echo $_SESSION['nombre-sitio']; ?></a></li>
           <li><a href="panel-comprobantes-gastos.php">Panel de Administracion</a></li>
           <li class="active"><?php echo $operacion; ?> Presupuesto</li>
         </ol>
@@ -73,7 +74,7 @@
     }elseif($operacion == "Editar"){
       $id_noti = $_GET['i'];
       $typeOper = "edit&i=".$id_noti;
-      $conocerDatosNoti = mysqli_query($mysqliConn,"select * from noti where id_noti=$id_noti;") or die(mysqli_error($mysqliConn));
+      $conocerDatosNoti = mysqli_query($mysqli,"select * from noti where id_noti=$id_noti;") or die(mysqli_error($mysqli));
       $filaDatosNoti = mysqli_fetch_row($conocerDatosNoti);
       $tituloAviso = $filaDatosNoti[1]  ;
       $tituloDescripcion = $filaDatosNoti[2];
