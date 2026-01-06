@@ -3,40 +3,45 @@
 	require_once 'configPHP/conecta.inc.php';
 	require_once 'inc/config-site.php';
 
-	// Recibir datos
+
+
 	$user     = $_POST['email_country_login'] ?? '';
 	$password = $_POST['password_country_login'] ?? '';
 
-	// Validación mínima
 	if ($user === '' || $password === '') {
 		header("Location: index.php?alert=1");
 		exit;
 	}
 
-	// Prepared Statement
-	$sql = "SELECT * FROM user WHERE user_login = ? AND password = ? LIMIT 1";
-	$stmt = mysqli_prepare($mysqli, $sql);
+	$sql = "
+		SELECT id_user, nombre, level
+		FROM user
+		WHERE user_login = ? AND password = ?
+		LIMIT 1
+	";
 
+	$stmt = mysqli_prepare($mysqli, $sql);
 	if (!$stmt) {
-		die("Error en prepare: " . mysqli_error($mysqli));
+		die("Prepare failed: " . mysqli_error($mysqli));
 	}
 
 	mysqli_stmt_bind_param($stmt, "ss", $user, $password);
 	mysqli_stmt_execute($stmt);
 
-	$result = mysqli_stmt_get_result($stmt);
+	/* 🔴 CLAVE: NO usar get_result */
+	mysqli_stmt_store_result($stmt);
 
-	if ($result && mysqli_num_rows($result) > 0) {
+	if (mysqli_stmt_num_rows($stmt) > 0) {
 
-		$row = mysqli_fetch_assoc($result);
+		mysqli_stmt_bind_result($stmt, $id_user, $nombre, $level_user);
+		mysqli_stmt_fetch($stmt);
 
-		$_SESSION['id_user']    = $row['id_user'] ?? $row[0];
-		$_SESSION['name_user']  = htmlspecialchars_decode($row['nombre'] ?? $row[2]);
-		$_SESSION['level_user'] = $row['level'] ?? $row[5];
+		$_SESSION['id_user']    = $id_user;
+		$_SESSION['name_user']  = htmlspecialchars_decode($nombre);
+		$_SESSION['level_user'] = $level_user;
 		$_SESSION['redirect']   = "avisos";
 
-		// Validar acceso por nivel
-		if ($_SESSION['level_user'] == 3) {
+		if ($level_user == 3) {
 			header("Location: vista_estatus_mantto.php");
 		} else {
 			header("Location: notificaciones.php");
